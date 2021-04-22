@@ -1,0 +1,1 @@
+# adaptor_docker_example
