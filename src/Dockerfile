@@ -27,3 +27,4 @@ RUN apt-get install ffmpeg libsm6 libxext6 -y
 
 # copy the folder of the Dockerfile and all its subfolders to the workspace folder and its subfolders in the container
 ADD . /workspace/
+RUN chmod +x /workspace/prediction.sh
