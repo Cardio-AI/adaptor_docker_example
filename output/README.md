@@ -1,1 +1,1 @@
-The generated file should be found in this directory
+The generated files should be found in this directory
