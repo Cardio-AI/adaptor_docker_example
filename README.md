@@ -18,7 +18,8 @@ or
 docker run --gpus all -v "<absolute_host_input_directory>:/input" -v "<absolute_host_output_directory>:/output" adaptor_challenge /workspace/prediction.sh /input/<path_to_input_image> /output/<path_to_output_image> domain_transformation
 ```  
 
-This working example can be run with
+
+## This working example can be run with
 
 ```
 docker run --gpus all -v "<absolute_host_input_directory>:/input" -v "<absolute_host_output_directory>:/output" adaptor_challenge /workspace/prediction.sh /input/example_folder/example_subfolder/AdaptOR.png /output/example_folder/example_subfolder/AdaptOR.json landmark_detection
