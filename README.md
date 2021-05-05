@@ -1,6 +1,6 @@
 # adaptor_docker_example
 
-## This working example can be build and run with
+## Setup
 
 1. The container can be build with
 
