@@ -50,20 +50,22 @@ if __name__ == "__main__":
     # i.e.: model_file = "/workspace/model.pt"
 
     if task == "domain_transformation":
-        # Optional: TODO Import and call domain transformation code and create an image at the output file path
+        # Optional: TODO Import and call domain transformation code and create images in the output directory
 
         # To test this example run
-        # "docker run -v "<absolute_host_input_directory>:/input" -v "<absolute_host_output_directory>:/output" adaptor_challenge /workspace/prediction.sh /input/example_folder/example_subfolder/AdaptOR.png /output/example_folder/example_subfolder/AdaptOR.png domain_transformation"
+        # "docker --gpus all run -v "<absolute_host_input_directory>:/input" -v "<absolute_host_output_directory>:/output" adaptor_challenge /workspace/prediction.sh domain_transformation"
         # example images read
         for dirpath, dirname, filenames in os.walk(input_directory):
             for filename in filenames:
                 if ".png" in filename:
+                # example read input image
                     input_file_path = os.path.join(dirpath, filename)
                     input_img = cv2.imread(input_file_path)
                     # example operation on image
                     inverted_input_img = cv2.bitwise_not(input_img)
+                    # example get corresponding output path
                     output_file_path = os.path.join(get_corresponding_path(input_file_path, input_directory, output_directory), filename)
-                    # example create the folders if they not exist
+                    # example create the output subfolders if they not exist
                     if not os.path.exists(os.path.dirname(output_file_path)):
                         os.makedirs(os.path.dirname(output_file_path))
                     # example writing of image
@@ -74,15 +76,16 @@ if __name__ == "__main__":
     # The json files structure can be found in the synapse wiki
 
     # To test this example run
-    # "docker run -v "<absolute_host_input_directory>:/input" -v "<absolute_host_output_directory>:/output" adaptor_challenge /workspace/prediction.sh /input/example_folder/example_subfolder/AdaptOR.png /output/example_folder/example_subfolder/AdaptOR_points.json landmark_detection"
+    # "docker --gpus all run -v "<absolute_host_input_directory>:/input" -v "<absolute_host_output_directory>:/output" adaptor_challenge /workspace/prediction.sh landmark_detection"
 
     # example images read
     for dirpath, dirname, filenames in os.walk(input_directory):
         for filename in filenames:
             if ".png" in filename:
+                # example read input image
                 input_file_path = os.path.join(dirpath, filename)
                 input_img = cv2.imread(input_file_path)
-                # example create json
+                # example create json from image
                 labels = {
                     "folderName": Path(input_file_path).parent.parent.name,
                     "subfolderName": Path(input_file_path).parent.name,
@@ -92,10 +95,11 @@ if __name__ == "__main__":
                         "y": input_img.shape[0]
                     }]
                 }
+                # example get corresponding output path
                 output_file_path = os.path.join(get_corresponding_path(input_file_path, input_directory, output_directory), Path(filename).stem + ".json")
-                # example create the folders if they not exist
+                # example create the output subfolders if they not exist
                 if not os.path.exists(os.path.dirname(output_file_path)):
                     os.makedirs(os.path.dirname(output_file_path))
-                output_file = open(output_file_path, "w")
                 # example write the json file
+                output_file = open(output_file_path, "w")
                 json.dump(labels, output_file, indent=4)
