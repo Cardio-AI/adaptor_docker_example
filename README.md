@@ -1,4 +1,4 @@
-# adaptor_docker_example
+# AdaptOR2021 MICCAI Challenge Docker Example
 
 ## Setup
 
