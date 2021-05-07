@@ -1,2 +1,2 @@
-# pip_requirements.txt can be generated with "pip freeze >> pip_requirements.txt"
+# pip_requirements.txt can be generated with "pip freeze > pip_requirements.txt"
 opencv-python==4.5.1.48
