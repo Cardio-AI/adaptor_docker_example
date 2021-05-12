@@ -3,6 +3,10 @@
 A docker example repository to support participants in creating submissions for
 the [AdaptOR2021 MICCAI Challenge](https://www.synapse.org/AdaptOR_Challenge_2021_MICCAI).
 
+- [Challenge Website](https://adaptor2021.github.io/)
+- [Synapse Challenge](https://www.synapse.org/AdaptOR_Challenge_2021_MICCAI)
+- [Submission Tutorial](https://www.synapse.org/#!Synapse:syn25314439/wiki/610471)
+
 ## Setup
 
 1. The container can be built with
