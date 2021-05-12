@@ -18,17 +18,23 @@ def get_corresponding_path(input_path, input_directory, output_directory):
     :returns: the corresponding output directory path in the output directory
     """
     # make sure the given input path is a directory
-    parts = list(Path(input_path).parts) if Path(input_path).is_dir else Path(input_path).is_dir[:-1]
-    
+    if Path(input_path).is_dir():
+        parts = list(Path(input_path).parts)
+    else:
+        parts = list(Path(input_path).parts[:-1])
+
     # get the input path parts
     input_parts = list(Path(input_directory).parts)
     
     # get the output path parts
     output_parts = list(Path(output_directory).parts)
-    
+
     # remove the input path parts
-    parts_without_input_parts = [part for (index, part) in enumerate(parts) if len(input_parts) <= index or input_parts[index] != part]
-    
+    parts_without_input_parts = [
+        part for (index, part) in enumerate(parts)
+        if len(input_parts) <= index or input_parts[index] != part
+    ]
+
     # add the output path parts
     output_parts += parts_without_input_parts
 
@@ -38,6 +44,7 @@ def get_corresponding_path(input_path, input_directory, output_directory):
         output_path = os.path.join(output_path, part)
 
     return output_path
+
 
 if __name__ == "__main__":
 
@@ -69,7 +76,7 @@ if __name__ == "__main__":
         # example images read
         for dirpath, dirname, filenames in os.walk(input_directory):
             for filename in filenames:
-                if ".png" in filename:
+                if filename.endswith(".png"):
                     # example read input image
                     input_file_path = os.path.join(dirpath, filename)
                     input_img = cv2.imread(input_file_path)
@@ -94,7 +101,7 @@ if __name__ == "__main__":
     # example images read
     for dirpath, dirname, filenames in os.walk(input_directory):
         for filename in filenames:
-            if ".png" in filename:
+            if filename.endswith(".png"):
                 # example read input image
                 input_file_path = os.path.join(dirpath, filename)
                 input_img = cv2.imread(input_file_path)
@@ -114,6 +121,6 @@ if __name__ == "__main__":
                 if not os.path.exists(os.path.dirname(output_file_path)):
                     os.makedirs(os.path.dirname(output_file_path))
                 # example write the json file
-                output_file = open(output_file_path, "w")
-                json.dump(labels, output_file, indent=4)
+                with open(output_file_path, "w") as output_file:
+                    json.dump(labels, output_file, indent=4)
     print("Landmark detection successfully completed. The json files with the extracted points can now be found in the host output directory.")
