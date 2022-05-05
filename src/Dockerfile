@@ -7,7 +7,7 @@
 FROM continuumio/miniconda3
 
 # keep index up to date
-RUN apt-get update
+RUN apt-get --allow-releaseinfo-change update
 
 # copy requirements files to container
 # pip_requirements.txt can be generated with "pip freeze >> pip_requirements.txt"
@@ -23,8 +23,9 @@ RUN conda install -n base --file /workspace/conda_requirements.txt
 
 # install additional requirements
 # remove this line if openCV2 is not used
-RUN apt-get install ffmpeg libsm6 libxext6 -y
+RUN apt-get install -y libgl1
 
 # copy the folder of the Dockerfile and all its subfolders to the workspace folder and its subfolders in the container
 ADD . /workspace/
 RUN chmod +x /workspace/prediction.sh
+ENTRYPOINT ["./workspace/prediction.sh"]
