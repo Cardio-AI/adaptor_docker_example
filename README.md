@@ -6,7 +6,7 @@ the [AdaptOR2022 MICCAI Challenge](https://www.synapse.org/AdaptOR_Challenge_202
 - [Challenge Website](https://adaptor2022.github.io/)
 - [Information on submission](https://adaptor2022.github.io/submissiondetails/)
 - [Synapse Challenge](https://www.synapse.org/AdaptOR_Challenge_2022_MICCAI)
-- [Submission Tutorial](https://www.synapse.org/#!Synapse:syn29340309/wiki/)
+- [Submission Tutorial](https://www.synapse.org/#!Synapse:syn29340309/wiki/617629)
 
 ## Setup
 
