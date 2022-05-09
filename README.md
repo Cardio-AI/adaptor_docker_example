@@ -4,8 +4,9 @@ A docker example repository to support participants in creating submissions for
 the [AdaptOR2022 MICCAI Challenge](https://www.synapse.org/AdaptOR_Challenge_2022_MICCAI).
 
 - [Challenge Website](https://adaptor2022.github.io/)
+- [Information on submission](https://adaptor2022.github.io/submissiondetails/)
 - [Synapse Challenge](https://www.synapse.org/AdaptOR_Challenge_2022_MICCAI)
-- [Submission Tutorial](https://www.synapse.org/#!Synapse:syn25314439/wiki/610471)
+- [Submission Tutorial](https://www.synapse.org/#!Synapse:syn29340309/wiki/)
 
 ## Setup
 
